@@ -29,13 +29,13 @@ function Book(title, author, pages, read) {
     this.pages = pages;
     this.read = read;
 
-    let report = "not read yet"
-    if(this.read === true) {
-        report = "has been read";
-    }
-
+    /**
+     * Function inside the Book constructor that prints a message containing
+     * information about a particular book.
+     * @returns A string containing information about a book
+     */
     this.info = function() {
-        console.log(`The ${this.title} by ${this.author}, ${this.pages} pages, ${report}`)
+        return `The ${this.title} by ${this.author}, ${this.pages} pages, ${isReadMessage(this.read)}`;
     }
 }
 
@@ -48,9 +48,18 @@ function Book(title, author, pages, read) {
 function addBookToLibrary() {
 
 }
-/******************************************************************************
- *        Name: 
- * Description: 
- *   Arguments: 
- *     Returns: 
- *****************************************************************************/
+
+/**
+ * This function returns a message depending on if the book has been read yet.
+ * @param {boolean} readStatus The status of whether or not the book has
+ * been read
+ * @returns A string that contains the message "not read yet" if the user
+ * has not read the book.  Otherwise the message is set to "has been read"
+ */
+function isReadMessage(readStatus) {
+    if(readStatus === false) {
+        return "not read yet";
+    } else {
+        return "has been read";
+    }
+}
