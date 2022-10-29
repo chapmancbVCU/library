@@ -27,7 +27,7 @@ const bookTwo = new Book("JavaScript: The Definitive Guide",
 const bookThree = new Book("Big Java: 2nd Edition",
                     "Cay Horstmann", 1216, true);
 const bookFour = new Book("Discrete Mathematics with Applications: Third Edition",
-                    "Susanna S. Epp", 775, read);
+                    "Susanna S. Epp", 775, true);
 const bookFive = new Book("Physics for Scientists and Engineers with Modern Physics",
                     1442, false);
 const bookSix = new Book("HTML & CSS: design and build websites",
