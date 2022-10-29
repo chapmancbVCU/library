@@ -22,8 +22,11 @@ const container = document.querySelector('#container')
 const bookZero = new Book("PHP & MySQL server-side web development",
                     "John Duckett", 668, false);
 const bookOne = new Book("Foo", "Bar", 42, true);
+const bookTwo = new Book("JavaScript: The Definitive Guide", 
+                    "David Flanagan", 687, false);
 myLibrary.push(bookZero);
 myLibrary.push(bookOne);
+myLibrary.push(bookTwo);
 
 
 /******************************************************************************
