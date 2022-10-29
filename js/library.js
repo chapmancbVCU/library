@@ -26,12 +26,20 @@ const bookTwo = new Book("JavaScript: The Definitive Guide",
                     "David Flanagan", 687, false);
 const bookThree = new Book("Big Java: 2nd Edition",
                     "Cay Horstmann", 1216, true);
-
+const bookFour = new Book("Discrete Mathematics with Applications: Third Edition",
+                    "Susanna S. Epp", 775, read);
+const bookFive = new Book("Physics for Scientists and Engineers with Modern Physics",
+                    1442, false);
+const bookSix = new Book("HTML & CSS: design and build websites",
+                    "John Duckett", 490, true);
 // Add bookss to myLibrary array
 myLibrary.push(bookZero);
 myLibrary.push(bookOne);
 myLibrary.push(bookTwo);
 myLibrary.push(bookThree);
+myLibrary.push(bookFour);
+myLibrary.push(bookFive);
+myLibrary.push(bookSix);
 
 
 /******************************************************************************
