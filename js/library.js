@@ -13,18 +13,23 @@
  * @type {Array<Book>}
  */
 let myLibrary = [];
+const container = document.querySelector('#container')
 
-// Test books
+
+/******************************************************************************
+ * Test Books
+ *****************************************************************************/
 const bookZero = new Book("PHP & MySQL server-side web development",
                     "John Duckett", 668, false);
 const bookOne = new Book("Foo", "Bar", 42, true);
-
 myLibrary.push(bookZero);
 myLibrary.push(bookOne);
 
-for(let i = 0; i < myLibrary.length; i++) {
-    console.log(myLibrary[i].info());
-}
+
+/******************************************************************************
+ * Function call upon page load
+ *****************************************************************************/
+displayCards();
 
 
 /**
@@ -51,6 +56,7 @@ function Book(title, author, pages, read) {
     }
 }
 
+
 /******************************************************************************
  *        Name: addBooktoLibrary
  * Description: Function for adding a book to the library array.
@@ -59,6 +65,39 @@ function Book(title, author, pages, read) {
  *****************************************************************************/
 function addBookToLibrary() {
 
+}
+
+function createCard (book) {
+    
+    const card = document.createElement('div');
+    card.classList.add('book-info');
+    container.append(card);
+
+    const bookTitle = document.createElement('p');
+    bookTitle.classList.add('book-title');
+    bookTitle.textContent = book.title;
+    card.appendChild(bookTitle);
+
+    const authorName = document.createElement('p');
+    authorName.classList.add('author-name');
+    authorName.textContent = `By: ${book.author}`;
+    card.appendChild(authorName);
+
+    const numberOfPages = document.createElement('p');
+    numberOfPages.classList.add('number-of-pages');
+    numberOfPages.textContent = `Length: ${book.pages} pages`;
+    card.appendChild(numberOfPages);
+
+    const isBookRead = document.createElement('p');
+    isBookRead.classList.add('is-book-read');
+    isBookRead.textContent = isReadMessage(book.read);
+    card.appendChild(isBookRead);
+}
+
+function displayCards() {
+    for(let i = 0; i < myLibrary.length; i++) {
+        createCard(myLibrary[i]);
+    }
 }
 
 /**
@@ -70,8 +109,8 @@ function addBookToLibrary() {
  */
 function isReadMessage(readStatus) {
     if(readStatus === false) {
-        return "not read yet";
+        return "This book has not been read yet.";
     } else {
-        return "has been read";
+        return "This book has been read";
     }
 }
