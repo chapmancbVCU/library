@@ -14,6 +14,7 @@
  */
 let myLibrary = [];
 
+// Test books
 /**
  * Constructor for adding a book to the library.
  * @param {string} title The title of the book to be added to the library 
@@ -23,7 +24,19 @@ let myLibrary = [];
  * read
  */
 function Book(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
 
+    let report = "not read yet"
+    if(this.read === true) {
+        report = "has been read";
+    }
+
+    this.info = function() {
+        console.log(`The ${this.title} by ${this.author}, ${this.pages} pages, ${report}`)
+    }
 }
 
 /******************************************************************************
