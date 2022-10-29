@@ -21,6 +21,20 @@ main {
   background-color: lightgray;
 }
 
+button {
+  font-size: 16px;
+  font-weight: bold;
+
+  color: #FFFFFF;
+  background-color: #5995DA;
+
+  border: none;
+  border-radius: 5px;
+
+  cursor: pointer;
+  width: 100px;
+  height: 30px;
+}
 .content {
   padding-top: 20px;
   display: grid;
@@ -39,5 +53,10 @@ main {
 
 .card-border {
   height: 1px;
-
 }
+
+.card-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
