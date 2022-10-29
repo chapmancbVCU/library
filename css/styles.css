@@ -58,5 +58,11 @@ button {
 .card-buttons {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 50px;
+}
+
+.card-button {
+  justify-self: center;
+  align-self: center;
 }
 
