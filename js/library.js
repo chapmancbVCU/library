@@ -99,6 +99,20 @@ function createCard (book) {
     isBookRead.classList.add('is-book-read');
     isBookRead.textContent = isReadMessage(book.read);
     card.appendChild(isBookRead);
+    
+    const cardButtons = document.createElement('div');
+    cardButtons.classList.add('card-buttons');
+    card.appendChild(cardButtons);
+
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('card-button');
+    deleteButton.textContent = "Delete";
+    cardButtons.appendChild(deleteButton);
+
+    const changeReadStatus = document.createElement('button');
+    changeReadStatus.classList.add('card-button');
+    changeReadStatus.textContent = "Read";
+    cardButtons.appendChild(changeReadStatus);
 }
 
 function displayCards() {
