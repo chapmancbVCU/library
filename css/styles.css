@@ -40,6 +40,15 @@ button {
   width: 100px;
   height: 30px;
 }
+
+button:hover {
+  background-color: #76AEED;
+}
+
+button:active {
+  background-color: #407FC7;
+}
+
 .content {
   padding-top: 20px;
   display: grid;
