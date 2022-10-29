@@ -24,9 +24,14 @@ const bookZero = new Book("PHP & MySQL server-side web development",
 const bookOne = new Book("Foo", "Bar", 42, true);
 const bookTwo = new Book("JavaScript: The Definitive Guide", 
                     "David Flanagan", 687, false);
+const bookThree = new Book("Big Java: 2nd Edition",
+                    "Cay Horstmann", 1216, true);
+
+// Add bookss to myLibrary array
 myLibrary.push(bookZero);
 myLibrary.push(bookOne);
 myLibrary.push(bookTwo);
+myLibrary.push(bookThree);
 
 
 /******************************************************************************
@@ -70,6 +75,12 @@ function addBookToLibrary() {
 
 }
 
+/**
+ * This function takes a book object and builds the information card.  This
+ * information is then printed to the browser window.
+ * @param {Book} book A book object whose variables will be used to populate
+ * the information in a card that appears on the website.
+ */
 function createCard (book) {
     
     const card = document.createElement('div');
@@ -115,6 +126,10 @@ function createCard (book) {
     cardButtons.appendChild(changeReadStatus);
 }
 
+/**
+ * This function takes the myLibrary array and builds all of the individual
+ * information cards shown on the webpage.
+ */
 function displayCards() {
     for(let i = 0; i < myLibrary.length; i++) {
         createCard(myLibrary[i]);
@@ -125,8 +140,9 @@ function displayCards() {
  * This function returns a message depending on if the book has been read yet.
  * @param {boolean} readStatus The status of whether or not the book has
  * been read
- * @returns A string that contains the message "not read yet" if the user
- * has not read the book.  Otherwise the message is set to "has been read"
+ * @returns A string that contains the message "This book has not been read 
+ * yet." if the user has not read the book.  Otherwise the message is set to 
+ * "has been read"
  */
 function isReadMessage(readStatus) {
     if(readStatus === false) {
