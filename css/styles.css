@@ -4,3 +4,26 @@
   Date Created: October 28, 2022
    Description: CSS Stylesheet for Library project.
 ******************************************************************************/
+header {
+  background-color: rgb(83, 201, 201);
+}
+
+h1{
+  text-align: center;
+}
+
+main {
+  background-color: lightgray;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 15px;
+}
+
+.book-info {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  border: 1px solid black;
+}
