@@ -9,6 +9,10 @@
   padding: 0;
 }
 
+body {
+  background-color: lightgray;
+}
+
 header {
   background-color: rgb(83, 201, 201);
 }
@@ -17,8 +21,9 @@ h1{
   text-align: center;
 }
 
-main {
-  background-color: lightgray;
+.add-book-div {
+  text-align: center;
+  margin-top: 20px;
 }
 
 button {
