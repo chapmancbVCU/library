@@ -58,6 +58,11 @@ button {
   align-self: center;
 }
 
+.author-name,
+.number-of-pages,
+.is-book-read {
+  padding-left: 15px;
+}
 .card-border {
   height: 1px;
 }
