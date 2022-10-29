@@ -78,6 +78,10 @@ function createCard (book) {
     bookTitle.textContent = book.title;
     card.appendChild(bookTitle);
 
+    const border = document.createElement('hr');
+    border.classList.add('card-border');
+    card.appendChild(border);
+
     const authorName = document.createElement('p');
     authorName.classList.add('author-name');
     authorName.textContent = `By: ${book.author}`;
