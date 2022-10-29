@@ -97,3 +97,15 @@ button:active {
   align-self: center;
 }
 
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-top: 25px;
+  background-color: rgb(83, 201, 201);
+}
+
+.footer-text {
+  font-size: 20px;
+  text-align: center;
+}
