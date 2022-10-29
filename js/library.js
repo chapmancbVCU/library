@@ -15,6 +15,18 @@
 let myLibrary = [];
 
 // Test books
+const bookZero = new Book("PHP & MySQL server-side web development",
+                    "John Duckett", 668, false);
+const bookOne = new Book("Foo", "Bar", 42, true);
+
+myLibrary.push(bookZero);
+myLibrary.push(bookOne);
+
+for(let i = 0; i < myLibrary.length; i++) {
+    console.log(myLibrary[i].info());
+}
+
+
 /**
  * Constructor for adding a book to the library.
  * @param {string} title The title of the book to be added to the library 
