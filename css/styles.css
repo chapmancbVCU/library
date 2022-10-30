@@ -28,6 +28,7 @@ main {
 
 header {
   background-color: rgb(83, 201, 201);
+  height: 100px;
 }
 
 h1{
@@ -75,7 +76,7 @@ button:active {
   display: grid;
   justify-self: center;
   width: 250px;
-  grid-template-rows: 60px 1fr 1fr 1fr;
+  grid-template-rows: 80px 1fr 1fr 1fr;
   gap: 10px;  
   border: 1px solid none;
   border-radius: 5px;
