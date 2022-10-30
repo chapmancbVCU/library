@@ -68,6 +68,7 @@ h1{
   margin-top: 25px;
   margin-bottom: 25px;
 }
+
 /* Close button in modal form. */
 .close {
   position: absolute;
@@ -88,17 +89,26 @@ h1{
 .form-row label {
   margin-bottom: 10px;
 }
+
 .form-row input{
-  width: 80%;
+  
   align-self: center;
 }
 
+.form-row .checkbox-label {
+  margin-bottom: 0;
+}
+
+.checkbox-label span {
+  margin-left: 5px;
+}
 .form-row input[type="text"],
 .form-row input[type="number"] {
   background-color: #FFFFFF;
   border: 1px solid #D6D9DC;
   border-radius: 3px;
   font-size: 20px;
+  width: 80%;
 }
 
 .form-row input[type="text"]:invalid,
@@ -107,9 +117,6 @@ h1{
   color: #D55C5F;
   box-shadow: none;
 }
-
-
-
 
 button {
   font-size: 16px;
