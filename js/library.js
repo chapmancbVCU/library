@@ -72,15 +72,13 @@ function Book(title, author, pages, read) {
     }
 }
 
-
-/******************************************************************************
- *        Name: addBooktoLibrary
- * Description: Function for adding a book to the library array.
- *   Arguments: 
- *     Returns: 
- *****************************************************************************/
+/**
+ * This function will create a form where the user can input information about 
+ * a book.  Then it will call the Book constructor and repaint the page so 
+ * that the new book is listed in the website.
+ */
 function addBookToLibrary() {
-
+    
 }
 
 /**
@@ -125,6 +123,7 @@ function createCard (book) {
 
     const deleteButton = document.createElement('button');
     deleteButton.classList.add('card-button');
+    deleteButton.setAttribute('id', 'delete-button');
     deleteButton.textContent = "Delete";
     cardButtons.appendChild(deleteButton);
 
