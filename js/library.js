@@ -48,6 +48,19 @@ myLibrary.push(bookSix);
 displayCards();
 
 
+/******************************************************************************
+ * Event listeners
+ *****************************************************************************/
+// We listen for an event when the add book button is clicked.
+document.getElementById('add-book-button').addEventListener('click', function() {
+    document.querySelector('.bg-modal').style.display = 'flex';
+});
+
+// Listen for event when we close form.
+document.querySelector('.close').addEventListener('click', function() {
+    document.querySelector('.bg-modal').style.display = 'none';
+});
+
 /**
  * Constructor for adding a book to the library.
  * @param {string} title The title of the book to be added to the library 
