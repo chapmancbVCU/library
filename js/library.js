@@ -61,6 +61,11 @@ document.querySelector('.close').addEventListener('click', function() {
     document.querySelector('.bg-modal').style.display = 'none';
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('add-book-record-button').addEventListener(
+        'click', addBookToLibrary);
+});
+
 /**
  * Constructor for adding a book to the library.
  * @param {string} title The title of the book to be added to the library 
@@ -90,9 +95,25 @@ function Book(title, author, pages, read) {
  * a book.  Then it will call the Book constructor and repaint the page so 
  * that the new book is listed in the website.
  */
-function addBookToLibrary() {
+function addBookToLibrary(ev) {
+    ev.preventDefault();            // Stop form from submitting
+
+    const bookToAdd = new Book(document.getElementById('title').value,
+                        document.getElementById('author').value,
+                        document.getElementById('number-of-pages').value,
+                        isReadChecked());
     
+    // For debugging
+    console.log(bookToAdd.info());
+
+    /* Add to libary, reset form, close form, and update webpage to show 
+    new card. */
+    myLibrary.push(bookToAdd);
+    document.forms[0].reset();
+    document.querySelector('.bg-modal').style.display = 'none';
+    displayCards();
 }
+
 
 /**
  * This function takes a book object and builds the information card.  This
@@ -153,6 +174,21 @@ function createCard (book) {
 function displayCards() {
     for(let i = 0; i < myLibrary.length; i++) {
         createCard(myLibrary[i]);
+    }
+}
+
+/**
+ * Returns true if checkbox in form for adding book is checked.  False 
+ * otherwise.
+ * @returns A boolean value depending of if the checkbox is checked
+ * or not as stated in function's description.
+ */
+function isReadChecked() {
+    if(document.getElementById('read').checked) {
+        return true;
+    }
+    else {
+        return false;
     }
 }
 
