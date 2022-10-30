@@ -47,8 +47,19 @@
                                 <label for="number-of-pages">Number of Pages</label>
                                 <input type="number" 
                                     name="number-of-pages" 
-                                    id="number-of-pages" 
+                                    id="number-of-pages"
+                                    min="5"
+                                    max="2000"
                                     required>
+                            </div>
+                            <div class="form-row">
+                                <label class="checkbox-label" for="read">
+                                    <input id="read" 
+                                        type="checkbox"
+                                        name="read"
+                                        value="is-read">
+                                    <span>Has this book been read?</span>
+                                </label>
                             </div>
                             <button>Submit</button>
                         </form>
