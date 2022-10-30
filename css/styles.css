@@ -55,8 +55,8 @@ h1{
 }
 
 .modal-content {
-  width: 500px;
-  height: 300px;
+  width: 400px;
+  height: 400px;
   background-color: white;
   border-radius: 5px;
 
@@ -64,6 +64,10 @@ h1{
   position: relative;
 }
 
+.modal-content h2 {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
 /* Close button in modal form. */
 .close {
   position: absolute;
@@ -72,6 +76,40 @@ h1{
   font-size: 42px;
   transform: rotate(45deg);
 }
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.form-row label {
+  margin-bottom: 10px;
+}
+.form-row input{
+  width: 80%;
+  align-self: center;
+}
+
+.form-row input[type="text"],
+.form-row input[type="number"] {
+  background-color: #FFFFFF;
+  border: 1px solid #D6D9DC;
+  border-radius: 3px;
+  font-size: 20px;
+}
+
+.form-row input[type="text"]:invalid,
+.form-row input[type="number"]:invalid {
+  border: 1px solid #D55C5F;
+  color: #D55C5F;
+  box-shadow: none;
+}
+
+
+
 
 button {
   font-size: 16px;
