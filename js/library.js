@@ -111,7 +111,7 @@ function addBookToLibrary(ev) {
     myLibrary.push(bookToAdd);
     document.forms[0].reset();
     document.querySelector('.bg-modal').style.display = 'none';
-    createCard(bookToAdd);
+    createCard(myLibrary[myLibrary.length - 1]);
 }
 
 
