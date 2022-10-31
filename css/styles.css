@@ -196,6 +196,7 @@ button:active {
 }
 
 footer {
+  padding: 15px 0 15px 0;
   position: relative;
   height: 100px;
   width: 100%;
@@ -203,6 +204,7 @@ footer {
 }
 
 .footer-text {
+  margin: 5px;
   font-size: 20px;
   text-align: center;
 }
