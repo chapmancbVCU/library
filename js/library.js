@@ -128,7 +128,6 @@ function createCard (book, index) {
     const card = document.createElement('div');
     card.classList.add('book-info');
     card.setAttribute('id', `${index}`);
-    console.log(`index: ${index}`);
     container.append(card);
 
     const bookTitle = document.createElement('p');
@@ -163,7 +162,7 @@ function createCard (book, index) {
     deleteButton.classList.add('card-button');
     deleteButton.setAttribute('id', 'delete-button');
     deleteButton.textContent = "Delete";
-    
+
     // Event listener for deleting a book.
     deleteButton.addEventListener('click', function() {
         deleteCard(index, card);
@@ -194,7 +193,7 @@ function displayCards() {
  * @param {card} card The individual card to be removed
  */
 function deleteCard(index, card) {
-    // Remove card from DOM
+    // Remove all cards from DOM
     for(let i = 0; i < myLibrary.length; i++) {
         const element = document.getElementById(`${i}`);
         element.remove();
@@ -202,11 +201,6 @@ function deleteCard(index, card) {
     
     // Remove card from array.
     myLibrary.splice(index, 1);
-
-    for(let i = 0; i < myLibrary.length; i++) {
-        console.log(myLibrary[i].info());
-        
-    }
 
     // Refresh the content.
     displayCards();
