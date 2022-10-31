@@ -208,7 +208,10 @@ function deleteCard(index, card) {
 
 /**
  * Returns true if checkbox in form for adding book is checked.  False 
- * otherwise.
+ * otherwise.  This function is commonly used for getting information
+ * from the checkbox in the add book form.  Once the form is submitted
+ * we use this function to set the boolean value for the read variable
+ * of the book object.
  * @returns A boolean value depending of if the checkbox is checked
  * or not as stated in function's description.
  */
