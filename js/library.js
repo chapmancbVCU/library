@@ -61,6 +61,7 @@ document.querySelector('.close').addEventListener('click', function() {
     document.querySelector('.bg-modal').style.display = 'none';
 });
 
+// Listen for when we click submit when adding a book.
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('add-book-record-button').addEventListener(
         'click', addBookToLibrary);
@@ -94,6 +95,7 @@ function Book(title, author, pages, read) {
  * This function will create a form where the user can input information about 
  * a book.  Then it will call the Book constructor and repaint the page so 
  * that the new book is listed in the website.
+ * @param {Event} ev Event for button click of the add book button
  */
 function addBookToLibrary(ev) {
     ev.preventDefault();            // Stop form from submitting
@@ -111,7 +113,7 @@ function addBookToLibrary(ev) {
     myLibrary.push(bookToAdd);
     document.forms[0].reset();
     document.querySelector('.bg-modal').style.display = 'none';
-    createCard(myLibrary[myLibrary.length - 1]);
+    createCard(myLibrary[myLibrary.length - 1], myLibrary.length - 1);
 }
 
 
@@ -119,12 +121,14 @@ function addBookToLibrary(ev) {
  * This function takes a book object and builds the information card.  This
  * information is then printed to the browser window.
  * @param {Book} book A book object whose variables will be used to populate
- * the information in a card that appears on the website.
+ * the information in a card that appears on the website
+ * @param {number} index The index of the book in the myLibrary array
  */
-function createCard (book) {
-    
+function createCard (book, index) {
     const card = document.createElement('div');
     card.classList.add('book-info');
+    card.setAttribute('id', `${index}`);
+    console.log(`index: ${index}`);
     container.append(card);
 
     const bookTitle = document.createElement('p');
@@ -159,6 +163,11 @@ function createCard (book) {
     deleteButton.classList.add('card-button');
     deleteButton.setAttribute('id', 'delete-button');
     deleteButton.textContent = "Delete";
+    
+    // Event listener for deleting a book.
+    deleteButton.addEventListener('click', function() {
+        deleteCard(index, card);
+    });
     cardButtons.appendChild(deleteButton);
 
     const changeReadStatus = document.createElement('button');
@@ -173,8 +182,34 @@ function createCard (book) {
  */
 function displayCards() {
     for(let i = 0; i < myLibrary.length; i++) {
-        createCard(myLibrary[i]);
+        createCard(myLibrary[i], i);
     }
+}
+
+/**
+ * This function removes all cards from the viewport, removes the specified
+ * card from the array, then calls displayCards to repaint the cards after
+ * the book object is removed from the array.
+ * @param {number} index The index for the book in the array to be removed
+ * @param {card} card The individual card to be removed
+ */
+function deleteCard(index, card) {
+    // Remove card from DOM
+    for(let i = 0; i < myLibrary.length; i++) {
+        const element = document.getElementById(`${i}`);
+        element.remove();
+    }
+    
+    // Remove card from array.
+    myLibrary.splice(index, 1);
+
+    for(let i = 0; i < myLibrary.length; i++) {
+        console.log(myLibrary[i].info());
+        
+    }
+
+    // Refresh the content.
+    displayCards();
 }
 
 /**
