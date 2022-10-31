@@ -82,7 +82,7 @@ function Book(title, author, pages, read) {
     this.read = read;
 
     /**
-     * Function inside the Book constructor that prints a message containing
+     * Function inside the Book constructor that prints a message containing 
      * information about a particular book.
      * @returns A string containing information about a book
      */
@@ -118,9 +118,9 @@ function addBookToLibrary(ev) {
 
 
 /**
- * This function takes a book object and builds the information card.  This
+ * This function takes a book object and builds the information card.  This 
  * information is then printed to the browser window.
- * @param {Book} book A book object whose variables will be used to populate
+ * @param {Book} book A book object whose variables will be used to populate 
  * the information in a card that appears on the website
  * @param {number} index The index of the book in the myLibrary array
  */
@@ -176,7 +176,7 @@ function createCard (book, index) {
 }
 
 /**
- * This function takes the myLibrary array and builds all of the individual
+ * This function takes the myLibrary array and builds all of the individual 
  * information cards shown on the webpage.
  */
 function displayCards() {
@@ -186,33 +186,38 @@ function displayCards() {
 }
 
 /**
- * This function removes all cards from the viewport, removes the specified
- * card from the array, then calls displayCards to repaint the cards after
+ * This function removes all cards from the viewport, removes the specified 
+ * card from the array, then calls displayCards to repaint the cards after 
  * the book object is removed from the array.
  * @param {number} index The index for the book in the array to be removed
  * @param {card} card The individual card to be removed
  */
 function deleteCard(index, card) {
-    // Remove all cards from DOM
-    for(let i = 0; i < myLibrary.length; i++) {
-        const element = document.getElementById(`${i}`);
-        element.remove();
-    }
-    
-    // Remove card from array.
+    eraseCardsFromDOM();
     myLibrary.splice(index, 1);
-
-    // Refresh the content.
     displayCards();
 }
 
 /**
+ * This function erases all cards from the DOM.  This function is very useful 
+ * for cases where you need to remove a book so that the ids for each card 
+ * is updated to match the corresponding book's location in the myLibrary 
+ * array.
+ */
+function eraseCardsFromDOM() {
+    for(let i = 0; i < myLibrary.length; i++) {
+        const element = document.getElementById(`${i}`);
+        element.remove();
+    }
+}
+
+/**
  * Returns true if checkbox in form for adding book is checked.  False 
- * otherwise.  This function is commonly used for getting information
- * from the checkbox in the add book form.  Once the form is submitted
- * we use this function to set the boolean value for the read variable
+ * otherwise.  This function is commonly used for getting information 
+ * from the checkbox in the add book form.  Once the form is submitted 
+ * we use this function to set the boolean value for the read variable 
  * of the book object.
- * @returns A boolean value depending of if the checkbox is checked
+ * @returns A boolean value depending of if the checkbox is checked 
  * or not as stated in function's description.
  */
 function isReadChecked() {
@@ -226,7 +231,7 @@ function isReadChecked() {
 
 /**
  * This function returns a message depending on if the book has been read yet.
- * @param {boolean} readStatus The status of whether or not the book has
+ * @param {boolean} readStatus The status of whether or not the book has 
  * been read
  * @returns A string that contains the message "This book has not been read 
  * yet." if the user has not read the book.  Otherwise the message is set to 
