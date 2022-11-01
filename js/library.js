@@ -67,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'click', addBookToLibrary);
 });
 
+
 /**
  * Constructor for adding a book to the library.
  * @param {string} title The title of the book to be added to the library 
@@ -115,7 +116,6 @@ function addBookToLibrary(ev) {
     document.querySelector('.bg-modal').style.display = 'none';
     createCard(myLibrary[myLibrary.length - 1], myLibrary.length - 1);
 }
-
 
 /**
  * This function takes a book object and builds the information card.  This 
@@ -180,6 +180,19 @@ function createCard (book, index) {
 }
 
 /**
+ * This function removes all cards from the viewport, removes the specified 
+ * card from the array, then calls displayCards to repaint the cards after 
+ * the book object is removed from the array.
+ * @param {number} index The index for the book in the array to be removed
+ * @param {HTMLDivElement} card The individual card to be removed
+ */
+ function deleteCard(index, card) {
+    eraseCardsFromDOM();
+    myLibrary.splice(index, 1);
+    displayCards();
+}
+
+/**
  * This function takes the myLibrary array and builds all of the individual 
  * information cards shown on the webpage.
  */
@@ -187,19 +200,6 @@ function displayCards() {
     for(let i = 0; i < myLibrary.length; i++) {
         createCard(myLibrary[i], i);
     }
-}
-
-/**
- * This function removes all cards from the viewport, removes the specified 
- * card from the array, then calls displayCards to repaint the cards after 
- * the book object is removed from the array.
- * @param {number} index The index for the book in the array to be removed
- * @param {card} card The individual card to be removed
- */
-function deleteCard(index, card) {
-    eraseCardsFromDOM();
-    myLibrary.splice(index, 1);
-    displayCards();
 }
 
 /**
@@ -252,9 +252,10 @@ function isReadMessage(readStatus) {
 /**
  * This function updates read status for an object and the corresponding
  * message on its card.
- * @param {*} index The index for the book in the array whose read status 
+ * @param {number} index The index for the book in the array whose read status 
  * we want to change
- * @param {HTMLDivElement} readStatus Container that displays read status 
+ * @param {HTMLParagraphElement} readStatus Container that displays read 
+ * status 
  * message
  */
 function updateReadStatus(index, readStatus) {
