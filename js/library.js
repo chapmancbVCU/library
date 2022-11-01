@@ -160,19 +160,23 @@ function createCard (book, index) {
 
     const deleteButton = document.createElement('button');
     deleteButton.classList.add('card-button');
-    deleteButton.setAttribute('id', 'delete-button');
     deleteButton.textContent = "Delete";
-
-    // Event listener for deleting a book.
-    deleteButton.addEventListener('click', function() {
-        deleteCard(index, card);
-    });
     cardButtons.appendChild(deleteButton);
 
     const changeReadStatus = document.createElement('button');
     changeReadStatus.classList.add('card-button');
-    changeReadStatus.textContent = "Read";
+    changeReadStatus.textContent = "Toggle Read";
     cardButtons.appendChild(changeReadStatus);
+
+    // Each card needs an event listener for its delete button.
+    deleteButton.addEventListener('click', () => {
+        deleteCard(index, card);
+    });
+
+    // Each card needs an event listener for its read button.
+    changeReadStatus.addEventListener('click', () => {
+        updateReadStatus(index, isBookRead);
+    })
 }
 
 /**
@@ -243,4 +247,18 @@ function isReadMessage(readStatus) {
     } else {
         return "This book has been read";
     }
+}
+
+/**
+ * This function updates read status for an object and the corresponding
+ * message on its card.
+ * @param {*} index The index for the book in the array whose read status 
+ * we want to change
+ * @param {HTMLDivElement} readStatus Container that displays read status 
+ * message
+ */
+function updateReadStatus(index, readStatus) {
+    myLibrary[index.read] = !myLibrary[index.read];
+    console.log(`status: ${myLibrary[index.read]}`);
+    readStatus.textContent = isReadMessage(myLibrary[index.read]);
 }
