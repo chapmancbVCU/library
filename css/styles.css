@@ -195,6 +195,11 @@ button:active {
   align-self: center;
 }
 
+hr {
+  border: none;
+  background-color: rgb(83, 201, 201);
+}
+
 footer {
   padding: 15px 0 15px 0;
   position: relative;
