@@ -101,22 +101,34 @@ function Book(title, author, pages, read) {
 function addBookToLibrary(ev) {
     ev.preventDefault();            // Stop form from submitting
 
-    const bookToAdd = new Book(document.getElementById('title').value,
-                        document.getElementById('author').value,
-                        document.getElementById('number-of-pages').value,
-                        isReadChecked());
-    
-    // For debugging
-    console.log(bookToAdd.info());
+    let title = document.getElementById('title').value 
+    let author = document.getElementById('author').value;
+    let pages = document.getElementById('number-of-pages').value;
 
-    /* Add to libary, reset form, close form, and update webpage to show 
-    new card. */
-    myLibrary.push(bookToAdd);
-    document.forms[0].reset();
-    document.querySelector('.bg-modal').style.display = 'none';
-    createCard(myLibrary[myLibrary.length - 1], myLibrary.length - 1);
-    eraseCardsFromDOM();
-    displayCards();
+    //We do form validation.
+    if(title == "") {
+        title.setCustomValidity("Required field");
+    } else if (author == "") {
+        author.setCustomValidity("Required field");
+    } else if (pages == "") {
+        pages.setCustomValidity("Required Field");
+    }
+    // If all checks pass we add the book to the library.
+    else {
+        const bookToAdd = new Book(title, author, pages, isReadChecked());
+        
+        // For debugging
+        console.log(bookToAdd.info());
+
+        /* Add to libary, reset form, close form, and update webpage to show 
+        new card. */
+        myLibrary.push(bookToAdd);
+        document.forms[0].reset();
+        document.querySelector('.bg-modal').style.display = 'none';
+        createCard(myLibrary[myLibrary.length - 1], myLibrary.length - 1);
+        eraseCardsFromDOM();
+        displayCards();
+    }
 }
 
 /**
@@ -168,7 +180,6 @@ function createCard (book, index) {
     const changeReadStatus = document.createElement('button');
     changeReadStatus.classList.add('card-button');
     changeReadStatus.textContent = "Toggle Read";
-    //changeReadStatus.setAttribute("onclick", `updateReadStatus(${index}, isReadMessage(${book.read}));`);
     cardButtons.appendChild(changeReadStatus);
 
     // Each card needs an event listener for its delete button.
@@ -179,7 +190,6 @@ function createCard (book, index) {
     // Each card needs an event listener for its read button.
     changeReadStatus.addEventListener('click', () => {
         updateReadStatus(index, isBookRead);
-
     });
 }
 
@@ -229,12 +239,7 @@ function eraseCardsFromDOM() {
  * or not as stated in function's description.
  */
 function isReadChecked() {
-    if(document.getElementById('read').checked) {
-        return true;
-    }
-    else {
-        return false;
-    }
+     return document.getElementById('read').checked ? true : false;
 }
 
 /**
