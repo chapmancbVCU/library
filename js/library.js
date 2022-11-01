@@ -115,6 +115,8 @@ function addBookToLibrary(ev) {
     document.forms[0].reset();
     document.querySelector('.bg-modal').style.display = 'none';
     createCard(myLibrary[myLibrary.length - 1], myLibrary.length - 1);
+    eraseCardsFromDOM();
+    displayCards();
 }
 
 /**
@@ -175,10 +177,9 @@ function createCard (book, index) {
     });
 
     // Each card needs an event listener for its read button.
-    document.addEventListener("DOMContentLoaded", function() {
-        changeReadStatus.addEventListener('click', () => {
-            updateReadStatus(index, isBookRead);
-        });
+    changeReadStatus.addEventListener('click', () => {
+        updateReadStatus(index, isBookRead);
+
     });
 }
 
