@@ -163,10 +163,10 @@ function createCard (book, index) {
     numberOfPages.textContent = `Length: ${book.pages} pages`;
     card.appendChild(numberOfPages);
 
-    const isBookRead = document.createElement('p');
-    isBookRead.classList.add('is-book-read');
-    isBookRead.textContent = isReadMessage(book.read);
-    card.appendChild(isBookRead);
+    const readStatus = document.createElement('p');
+    readStatus.classList.add('is-book-read');
+    readStatus.textContent = isReadMessage(book.read);
+    card.appendChild(readStatus);
     
     const cardButtons = document.createElement('div');
     cardButtons.classList.add('card-buttons');
@@ -189,7 +189,7 @@ function createCard (book, index) {
 
     // Each card needs an event listener for its read button.
     changeReadStatus.addEventListener('click', () => {
-        updateReadStatus(index, isBookRead);
+        updateReadStatus(index, readStatus);
     });
 }
 
