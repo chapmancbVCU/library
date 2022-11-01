@@ -32,7 +32,7 @@ const bookFive = new Book("Physics for Scientists and Engineers with Modern Phys
                     "Serway", 1442, false);
 const bookSix = new Book("HTML & CSS: design and build websites",
                     "John Duckett", 490, true);
-// Add bookss to myLibrary array
+
 myLibrary.push(bookZero);
 myLibrary.push(bookOne);
 myLibrary.push(bookTwo);
