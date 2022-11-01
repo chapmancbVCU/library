@@ -29,7 +29,7 @@ const bookThree = new Book("Big Java: 2nd Edition",
 const bookFour = new Book("Discrete Mathematics with Applications: Third Edition",
                     "Susanna S. Epp", 775, true);
 const bookFive = new Book("Physics for Scientists and Engineers with Modern Physics",
-                    1442, false);
+                    "Serway", 1442, false);
 const bookSix = new Book("HTML & CSS: design and build websites",
                     "John Duckett", 490, true);
 // Add bookss to myLibrary array
@@ -166,6 +166,7 @@ function createCard (book, index) {
     const changeReadStatus = document.createElement('button');
     changeReadStatus.classList.add('card-button');
     changeReadStatus.textContent = "Toggle Read";
+    //changeReadStatus.setAttribute("onclick", `updateReadStatus(${index}, isReadMessage(${book.read}));`);
     cardButtons.appendChild(changeReadStatus);
 
     // Each card needs an event listener for its delete button.
@@ -174,9 +175,11 @@ function createCard (book, index) {
     });
 
     // Each card needs an event listener for its read button.
-    changeReadStatus.addEventListener('click', () => {
-        updateReadStatus(index, isBookRead);
-    })
+    document.addEventListener("DOMContentLoaded", function() {
+        changeReadStatus.addEventListener('click', () => {
+            updateReadStatus(index, isBookRead);
+        });
+    });
 }
 
 /**
