@@ -31,7 +31,7 @@ class Book {
          * @returns A string containing information about a book
          */
         this.info = function() {
-            return `The ${this.title} by ${this.author}, ${this.pages} pages, ${isReadMessage(this.read)}`;
+            return `The ${this.title} by ${this.author}, ${this.pages} pages, ${this.isReadMessage(this.read)}`;
         }
     }
 
@@ -51,3 +51,20 @@ class Book {
         }
     }
 }
+
+/******************************************************************************
+ * Test Books
+ *****************************************************************************/
+const bookZero = new Book("PHP & MySQL server-side web development",
+"John Duckett", 668, false);
+const bookOne = new Book("Foo", "Bar", 42, true);
+const bookTwo = new Book("JavaScript: The Definitive Guide", 
+                    "David Flanagan", 687, false);
+const bookThree = new Book("Big Java: 2nd Edition",
+                    "Cay Horstmann", 1216, true);
+const bookFour = new Book("Discrete Mathematics with Applications: Third Edition",
+                    "Susanna S. Epp", 775, true);
+const bookFive = new Book("Physics for Scientists and Engineers with Modern Physics",
+                    "Serway", 1442, false);
+const bookSix = new Book("HTML & CSS: design and build websites",
+                    "John Duckett", 490, true);
