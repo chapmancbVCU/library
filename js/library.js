@@ -154,13 +154,27 @@ class Library {
 
         // Each card needs an event listener for its delete button.
         deleteButton.addEventListener('click', () => {
-            deleteCard(index, card);
+            myLibrary.deleteCard(index, card);
         });
 
         // Each card needs an event listener for its read button.
         changeReadStatus.addEventListener('click', () => {
-            updateReadStatus(index, readStatus);
+            myLibrary.updateReadStatus(index, readStatus);
         });
+    }
+
+
+    /**
+     * This function removes all cards from the viewport, removes the specified 
+     * card from the array, then calls displayCards to repaint the cards after 
+     * the book object is removed from the array.
+     * @param {number} index The index for the book in the array to be removed
+     * @param {HTMLDivElement} card The individual card to be removed
+     */
+    deleteCard(index, card) {
+        myLibrary.eraseCardsFromDOM();
+        myLibrary.onlineLibrary.splice(index, 1);
+        myLibrary.displayCards();
     }
 
 
@@ -182,11 +196,13 @@ class Library {
      * array.
      */
     eraseCardsFromDOM() {
-        for(let i = 0; i < myLibrary.length; i++) {
+        for(let i = 0; i < myLibrary.onlineLibrary.length; i++) {
             const element = document.getElementById(`${i}`);
             element.remove();
         }
     }
+
+
     /**
      * Returns true if checkbox in form for adding book is checked.  False 
      * otherwise.  This function is commonly used for getting information 
@@ -199,7 +215,25 @@ class Library {
     static isReadChecked() {
         return document.getElementById('read').checked ? true : false;
     }
+
+    /**
+     * This function updates read status for an object and the corresponding
+     * message on its card.
+     * @param {number} index The index for the book in the array whose read status 
+     * we want to change
+     * @param {HTMLParagraphElement} readStatus Container that displays read 
+     * status 
+     * message
+     */
+    updateReadStatus(index, readStatus) {
+        myLibrary.onlineLibrary[index.read] = !myLibrary.onlineLibrary[index.read];
+        console.log(`status: ${myLibrary.onlineLibrary[index.read]}`);
+        readStatus.textContent = myLibrary.onlineLibrary[index].isReadMessage(
+            myLibrary.onlineLibrary[index.read]);
+    }
 }
+
+
 /******************************************************************************
  * Test Books
  *****************************************************************************/
@@ -217,6 +251,7 @@ const bookFive = new Book("Physics for Scientists and Engineers with Modern Phys
 const bookSix = new Book("HTML & CSS: design and build websites",
                     "John Duckett", 490, true);
 
+                    
 /******************************************************************************
  * GLOBAL VARIABLES
  *****************************************************************************/
