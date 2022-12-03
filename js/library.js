@@ -82,14 +82,14 @@ class Library {
         }
         // If all checks pass we add the book to the library.
         else {
-            const bookToAdd = new Book(title, author, pages, isReadChecked());
+            const bookToAdd = new Book(title, author, pages, Library.isReadChecked());
             
             // For debugging
             console.log(bookToAdd.info());
 
             /* Add to libary, reset form, close form, and update webpage to show 
             new card. */
-            myLibrary.push(bookToAdd);
+            myLibrary.onlineLibrary.push(bookToAdd);
             document.forms[0].reset();
             document.querySelector('.bg-modal').style.display = 'none';
             createCard(myLibrary[myLibrary.length - 1], myLibrary.length - 1);
@@ -182,7 +182,7 @@ class Library {
      * @returns A boolean value depending of if the checkbox is checked 
      * or not as stated in function's description.
      */
-    isReadChecked() {
+    static isReadChecked() {
         return document.getElementById('read').checked ? true : false;
     }
 }
