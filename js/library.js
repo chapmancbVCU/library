@@ -92,9 +92,11 @@ class Library {
             myLibrary.onlineLibrary.push(bookToAdd);
             document.forms[0].reset();
             document.querySelector('.bg-modal').style.display = 'none';
-            createCard(myLibrary[myLibrary.length - 1], myLibrary.length - 1);
-            eraseCardsFromDOM();
-            displayCards();
+            myLibrary.createCard(
+                myLibrary.onlineLibrary[myLibrary.onlineLibrary.length - 1], 
+                myLibrary.onlineLibrary.length - 1);
+            myLibrary.eraseCardsFromDOM();
+            myLibrary.displayCards();
         }
     }
 
@@ -173,6 +175,18 @@ class Library {
     }
 
 
+    /**
+     * This function erases all cards from the DOM.  This function is very useful 
+     * for cases where you need to remove a book so that the ids for each card 
+     * is updated to match the corresponding book's location in the myLibrary 
+     * array.
+     */
+    eraseCardsFromDOM() {
+        for(let i = 0; i < myLibrary.length; i++) {
+            const element = document.getElementById(`${i}`);
+            element.remove();
+        }
+    }
     /**
      * Returns true if checkbox in form for adding book is checked.  False 
      * otherwise.  This function is commonly used for getting information 
