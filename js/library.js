@@ -60,6 +60,46 @@ class Library {
     }
 
     /**
+     * This function will create a form where the user can input information about 
+     * a book.  Then it will call the Book constructor and repaint the page so 
+     * that the new book is listed in the website.
+     * @param {Event} ev Event for button click of the add book button
+     */
+    addBookToLibrary(ev) {
+        ev.preventDefault();            // Stop form from submitting
+
+        let title = document.getElementById('title').value 
+        let author = document.getElementById('author').value;
+        let pages = document.getElementById('number-of-pages').value;
+
+        //We do form validation.
+        if(title == "") {
+            title.setCustomValidity("Required field");
+        } else if (author == "") {
+            author.setCustomValidity("Required field");
+        } else if (pages == "") {
+            pages.setCustomValidity("Required Field");
+        }
+        // If all checks pass we add the book to the library.
+        else {
+            const bookToAdd = new Book(title, author, pages, isReadChecked());
+            
+            // For debugging
+            console.log(bookToAdd.info());
+
+            /* Add to libary, reset form, close form, and update webpage to show 
+            new card. */
+            myLibrary.push(bookToAdd);
+            document.forms[0].reset();
+            document.querySelector('.bg-modal').style.display = 'none';
+            createCard(myLibrary[myLibrary.length - 1], myLibrary.length - 1);
+            eraseCardsFromDOM();
+            displayCards();
+        }
+    }
+
+
+    /**
      * This function takes a book object and builds the information card.  This 
      * information is then printed to the browser window.
      * @param {Book} book A book object whose variables will be used to populate 
@@ -120,6 +160,8 @@ class Library {
             updateReadStatus(index, readStatus);
         });
     }
+
+
     /**
      * This function takes the myLibrary array and builds all of the individual 
      * information cards shown on the webpage.
@@ -128,6 +170,20 @@ class Library {
         for(let i = 0; i < this.onlineLibrary.length; i++) {
             this.createCard(this.onlineLibrary[i], i);
         }
+    }
+
+
+    /**
+     * Returns true if checkbox in form for adding book is checked.  False 
+     * otherwise.  This function is commonly used for getting information 
+     * from the checkbox in the add book form.  Once the form is submitted 
+     * we use this function to set the boolean value for the read variable 
+     * of the book object.
+     * @returns A boolean value depending of if the checkbox is checked 
+     * or not as stated in function's description.
+     */
+    isReadChecked() {
+        return document.getElementById('read').checked ? true : false;
     }
 }
 /******************************************************************************
@@ -150,10 +206,6 @@ const bookSix = new Book("HTML & CSS: design and build websites",
 /******************************************************************************
  * GLOBAL VARIABLES
  *****************************************************************************/
-/**
- * Array that contains Book objects
- * @type {Array<Book>}
- */
 let myLibrary = new Library();
 
 myLibrary.onlineLibrary.push(bookZero);
@@ -170,3 +222,23 @@ const container = document.querySelector('#container');
  * Function call upon page load
  *****************************************************************************/
 myLibrary.displayCards();
+
+
+/******************************************************************************
+ * Event listeners
+ *****************************************************************************/
+// We listen for an event when the add book button is clicked.
+document.getElementById('add-book-button').addEventListener('click', function() {
+    document.querySelector('.bg-modal').style.display = 'flex';
+});
+
+// Listen for event when we close form.
+document.querySelector('.close').addEventListener('click', function() {
+    document.querySelector('.bg-modal').style.display = 'none';
+});
+
+// Listen for when we click submit when adding a book.
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('add-book-record-button').addEventListener(
+        'click', myLibrary.addBookToLibrary);
+});
