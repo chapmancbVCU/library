@@ -5,9 +5,9 @@
  *  Description: Functions that support implementation of Library website.
 ******************************************************************************/
 
-
 /**
- * Class that describes the Book object.
+ * Class that describes the Book object.  It contains the constructor and
+ * a methods for reporting information about the book and its read status.
  */
 class Book {
 
@@ -35,8 +35,6 @@ class Book {
         }
     }
 
-    
-
     /**
      * This function returns a message depending on if the book has been read yet.
      * @param {boolean} readStatus The status of whether or not the book has 
@@ -54,6 +52,12 @@ class Book {
     }
 }
 
+
+/**
+ * Class that has functions that describes the library.  It contains 
+ * methods that allows user to add book and overall management of the library
+ * itself.
+ */
 class Library {
     constructor() {
         this.onlineLibrary = [];
@@ -99,7 +103,6 @@ class Library {
             myLibrary.displayCards();
         }
     }
-
 
     /**
      * This function takes a book object and builds the information card.  This 
@@ -163,7 +166,6 @@ class Library {
         });
     }
 
-
     /**
      * This function removes all cards from the viewport, removes the specified 
      * card from the array, then calls displayCards to repaint the cards after 
@@ -177,7 +179,6 @@ class Library {
         myLibrary.displayCards();
     }
 
-
     /**
      * This function takes the myLibrary array and builds all of the individual 
      * information cards shown on the webpage.
@@ -187,7 +188,6 @@ class Library {
             this.createCard(this.onlineLibrary[i], i);
         }
     }
-
 
     /**
      * This function erases all cards from the DOM.  This function is very useful 
@@ -201,7 +201,6 @@ class Library {
             element.remove();
         }
     }
-
 
     /**
      * Returns true if checkbox in form for adding book is checked.  False 
@@ -251,7 +250,7 @@ const bookFive = new Book("Physics for Scientists and Engineers with Modern Phys
 const bookSix = new Book("HTML & CSS: design and build websites",
                     "John Duckett", 490, true);
 
-                    
+
 /******************************************************************************
  * GLOBAL VARIABLES
  *****************************************************************************/
